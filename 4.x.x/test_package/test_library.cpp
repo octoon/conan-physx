@@ -1,4 +1,6 @@
-#include "PxConfig.h"
+#define PX_PHYSX_STATIC_LIB
+
+// #include "PxConfig.h"
 #include "PxPhysicsAPI.h"
 
 using namespace physx;

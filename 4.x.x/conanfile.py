@@ -261,7 +261,12 @@ class PhysXConan(ConanFile):
 
         tools.save(os.path.join(self.package_folder, "licenses", "LICENSE"), self._get_license())
 
+        physx_source_subfolder = os.path.join(self.build_folder, self._source_subfolder)
+        physx_build_subfolder = os.path.join(self.build_folder, self._build_subfolder)
+
         out_lib_dir = os.path.join(self.package_folder, "lib", self._get_physx_build_type())
+
+        self.copy(pattern="*.h", dst="include", src=os.path.join(physx_source_subfolder, "physx", "include"), keep_path=True)
         self.copy(pattern="*.a", dst="lib", src=out_lib_dir, keep_path=False)
         self.copy(pattern="*.so", dst="lib", src=out_lib_dir, keep_path=False)
         self.copy(pattern="*.dylib*", dst="lib", src=out_lib_dir, keep_path=False)

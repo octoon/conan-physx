@@ -1,6 +1,8 @@
 #include <iostream>
 
-#include "PxConfig.h"
+#define PX_PHYSX_STATIC_LIB
+
+// #include "PxConfig.h"
 #include "PxPhysicsAPI.h"
 
 #define PVD_HOST "127.0.0.1"
@@ -63,7 +65,7 @@ void initPhysics() {
   gDispatcher = PxDefaultCpuDispatcherCreate(4);
   sceneDesc.cpuDispatcher = gDispatcher;
   sceneDesc.filterShader = PxDefaultSimulationFilterShader;
-
+/*
 #if PX_SUPPORT_GPU_PHYSX
   PxCudaContextManagerDesc cudaContextManagerDesc;
   cudaContextManagerDesc.interopMode = PxCudaInteropMode::NO_INTEROP;
@@ -83,7 +85,7 @@ void initPhysics() {
   sceneDesc.gpuMaxNumPartitions = 8; //Defines the maximum number of partitions used by the solver. Only power-of-2 values are valid.
                                     //A value of 8 generally gives best balance between performance and stability.
 #endif
-
+*/
   gScene = gPhysics->createScene(sceneDesc);
 
   PxPvdSceneClient *pvdClient = gScene->getScenePvdClient();
